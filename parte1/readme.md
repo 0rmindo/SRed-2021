@@ -26,7 +26,6 @@ network:
                 search: []                # identificação do domínio, aqui neste caso está vazio.
         ens192:                           # nome da interface que está sendo configurada. Verifique com o comando 'ifconfig -a'
             addresses: [192.168.0.201/25] # IP e Máscara de interface externa.
-            dhcp4: false                  # dhcp4 false -> cliente DHCP está desabilitado, logo o utilizará o IP do campo 'addresses'
     version: 2
 ```
 ### Após salvar o arquivo é necessário aplicar as configurações, com o **netplan apply**. Depois veja a configuração das interfaces com ****ifconfig -a***
