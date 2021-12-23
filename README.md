@@ -20,8 +20,7 @@ Tabela 1: Definições da rede interna
 | VirtualBox (gateway)     | 10.9.14.1      |
 | Broadcast   | 10.9.14..255  |
 | ns1         | 10.9.14.126   |
-| ns2 (opcional) | 10.9.14.109 |
-| samba       | 10.9.14.100   |
+| samba       | 10.9.14.126   |
 
 Tabela 2: Definições da rede externa
 
