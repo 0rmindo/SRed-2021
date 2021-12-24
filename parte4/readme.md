@@ -277,3 +277,5 @@ MulticastDNS setting: no
 ```bash
   ping google.com
 ```
+
+### [VOLTAR PARA HOME](https://github.com/0rmindo/SRed-2021/blob/main/README.md)
