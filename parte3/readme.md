@@ -216,3 +216,5 @@ sudo chgrp sambashare /samba/public
    * Em um máquina com Windows (também pode usar linux os MacOS) digite no Winndows Explorer o endereço IP do servidor samba da seguinte forma:
     **\\ip_do_maquina**. No meu caso: \\10.9.14.126
 
+
+### [VOLTAR PARA HOME](https://github.com/0rmindo/SRed-2021/blob/main/README.md)
