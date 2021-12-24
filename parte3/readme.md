@@ -11,11 +11,14 @@ OBS: após o reboot o nome da máquina aparecerá no prompt do shell
 
 
    **1. Vamos instalar o servidor samba na VM**
-   _Primeiro faremos o update depois instalamos o samba_
+   _Primeiro faremos o update depois instalamos o samba._
+   * Na minha maquina o samba já estava intalado, o=por conta das outras atividades, mas digite os comandos à seguir.
    
 ```bash
  sudo apt update
  ```
+ ![update](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/11.jpg)
+ 
  ```bash
  sudo apt install samba
 ```
@@ -52,11 +55,14 @@ RESULTADO
              └─739 /usr/sbin/smbd --foreground --no-process-group
 
 ```
+ ![status](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/30.jpg)
+
 ```bash
  netstat -an | grep LISTEN
 tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN     
 tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN   
 ```
+ ![LISTEN](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/12.jpg)
 
   **3. Façao backup do arquivo de configuração do samba e cria um arquivo novo somente com os comandos necessários.**
   
@@ -64,13 +70,17 @@ tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN
  sudo cp /etc/samba/smb.conf{,.backup}
  ```
  
+ 
    **4. Aqui vamos verificar se foi feito o backup do arquivo "smb.conf".**
     
- ```bash
+```bash
  ls -la /etc/samba
+```
+```bash
 -rw-r--r--  1 root root 8942 Mar 22 20:55 smb.conf
 -rw-r--r--  1 root root 8942 Mar 23 01:42 smb.conf.backup
 ```
+ ![ls -la](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/31.jpg)
 
    **5. Agora use esse comando**
 ```bash
@@ -148,6 +158,8 @@ sudo bash -c 'grep -v -E "^#|^;" /etc/samba/smb.conf.backup | grep . > /etc/samb
    #force directory mode = 0777
 ```
    
+![smbd.conf](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/13.jpg)
+
    * Renicie o serviço smbd
     
 ```bash
@@ -199,22 +211,30 @@ Added user aluno.
  sudo mkdir -p /samba/publico
 ```
 
+ ![add user](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/14.jpg)
+
    * configure as permissões para que qualquer um possa acessar o compartilhamento público.
 
 ```bash
 sudo chown -R nobody:nogroup /samba/public
 ```
+ ![chown](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/15.jpg)
+
 ```bash
 sudo chmod -R 0775 /samba/public
 ```
+ ![chmod](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/16.jpg)
+
 ```bash
 sudo chgrp sambashare /samba/public
 ```
+ ![chgrp](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/17.jpg)
+
 
    **11. Cliente do compartilhamento:**
    
    * Em um máquina com Windows (também pode usar linux os MacOS) digite no Winndows Explorer o endereço IP do servidor samba da seguinte forma:
     **\\ip_do_maquina**. No meu caso: \\10.9.14.126
-
-
+  > Não consegui fazer esse pois estamos pelo celular
+  
 ### [VOLTAR PARA HOME](https://github.com/0rmindo/SRed-2021/blob/main/README.md)
