@@ -197,7 +197,7 @@ Added user aluno.
 
 ```
     
-   * O Samba já está instalado, agora precisamos criar um diretório para compartilhá-lo em rede.
+   11. O Samba já está instalado, agora precisamos criar um diretório para compartilhá-lo em rede.
     
    _Aqui vamos criar o diretório sambashare dentro de home e de aluno_
       
@@ -213,7 +213,7 @@ Added user aluno.
 
  ![add user](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/14.jpg)
 
-   * configure as permissões para que qualquer um possa acessar o compartilhamento público.
+   12. configure as permissões para que qualquer um possa acessar o compartilhamento público.
 
 ```bash
 sudo chown -R nobody:nogroup /samba/public
@@ -231,10 +231,27 @@ sudo chgrp sambashare /samba/public
  ![chgrp](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/17.jpg)
 
 
-   **11. Cliente do compartilhamento:**
+   13. Para verificar se o serviço samba está funcionando é necessário desativar o firewal.
    
-   * Em um máquina com Windows (também pode usar linux os MacOS) digite no Winndows Explorer o endereço IP do servidor samba da seguinte forma:
-    **\\ip_do_maquina**. No meu caso: \\10.9.14.126
-  > Não consegui fazer esse pois estamos pelo celular
+```bash
+ sudo ufw disable
+```
+```bash
+RESULTADO
+Firewall stopped and disabled on system startup
+```
+  Verifique se esta inativo
+```bash
+ sudo ufw status
+```
+```bash
+RESULTADO
+Status: inactive
+```
+   14. Agora abra o seu exploirador de arquivo e digite o IP da VM _(10.9.14.126)_
+
+ ![chgrp](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/32.jpg)
+ 
+ **Está funcionando**
   
 ### [VOLTAR PARA HOME](https://github.com/0rmindo/SRed-2021/blob/main/README.md)
