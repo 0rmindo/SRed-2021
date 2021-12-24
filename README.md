@@ -39,3 +39,23 @@ Tabela 3: Nomes dos servidores
 | NameServer1 (ns1) | ns1.pedro_filipe_914.labredes.ifalarapiraca.local    |
 | NameServer2 (ns2) | ns2.pedro_filipe_914.labredes.ifalarapiraca.local    |
 | Samba-SRV.        | samba.pedro_filipe_914.labredes.ifalarapiraca.local  |
+
+### Configuração da interface de rede 
+(Parte1)
+
+* [Para realizar a configuração de IP estático e DNS ma interface de rede](https://github.com/0rmindo/SRed-2021/blob/main/parte1/readme.md)
+
+### Configuração do gateway server/NAT 
+(Parte2)
+
+* [Para realizar a configuração de um servidor de gateway com Iptables/NAT](https://github.com/0rmindo/SRed-2021/blob/main/parte2/readme.md)
+
+### Configuração do SAMBA 
+(Parte3)
+
+* [Para realizar a configuração de um servidor de arquivos com Samba](https://github.com/0rmindo/SRed-2021/blob/main/parte3/readme.md)
+
+### Configuração do Bind9 (DNS Server) 
+(Parte4)
+
+* [Para realizar a configuração os servidores DNS Master e Slave](https://github.com/0rmindo/SRed-2021/blob/main/parte4/readme.md)
