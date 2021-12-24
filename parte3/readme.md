@@ -19,7 +19,7 @@ OBS: após o reboot o nome da máquina aparecerá no prompt do shell
  ```
  ![update](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/11.jpg)
  
- ```bash
+```bash
  sudo apt install samba
 ```
    
