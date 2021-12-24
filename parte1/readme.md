@@ -28,6 +28,8 @@ network:
             addresses: [192.168.0.201/25] # IP e Máscara de interface externa.
     version: 2
 ```
+![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/1.jpg)
+
 ### Após salvar o arquivo é necessário aplicar as configurações, com o **netplan apply**. Depois veja a configuração das interfaces com ****ifconfig -a***
 
 ```bash
@@ -37,4 +39,4 @@ network:
  ifconfig -a
 ```
 
-### [VOLTAR PARA HOME](https://github.com/0rmindo/SRed-2021/blob/main/README.md)
+
