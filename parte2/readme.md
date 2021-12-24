@@ -42,7 +42,7 @@ LAN interface: ens192
 ---
    4. no ubuntu 18.04 o arquivo /etc/rc.local não existe mais. Então é necessário recriá-lo.
 ```bash
-$ sudo nano /etc/rc.local
+ sudo nano /etc/rc.local
 ```
 
 ---
