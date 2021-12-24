@@ -138,3 +138,4 @@ iptables -A FORWARD -p udp -d 10.9.14.126 –-dport 53 -j ACCEPT
 ```
 
 
+### [VOLTAR PARA HOME](https://github.com/0rmindo/SRed-2021/blob/main/README.md)
