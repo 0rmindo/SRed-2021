@@ -16,7 +16,7 @@
 ```bash
 $ sudo systemctl enable bind9
 ```
-
+>primeira e segunda parte da imagem
 
 
 ## Diretórios do bind
@@ -43,6 +43,10 @@ drwxr-xr-x 94 root root 4096 Oct  8 23:29 ..
 -rw-r-----  1 bind bind   77 Sep 19 14:48 rndc.key
 -rw-r--r--  1 root root 1317 Aug  7 14:43 zones.rfc1918
 ```
+> Terceira parte da imagem
+
+![install bind9 & ls -la](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/18.jpg)
+
 
 ### Zonas
    * As zonas são especificadas em arquivos **db**. Vamos criar um diretório para armazendar os arquivos de zonas, que sera o diretório ***/etc/bind/zones***  
@@ -51,6 +55,8 @@ drwxr-xr-x 94 root root 4096 Oct  8 23:29 ..
 ```bash
  sudo mkdir /etc/bind/zones
 ```
+![mkdir /etc/bind/zones](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/19.jpg)
+
 
    3. Criar arquivos db
    * Criar o arquivo **db** no diretório ***/etc/bind/zones***. 
@@ -64,6 +70,8 @@ drwxr-xr-x 94 root root 4096 Oct  8 23:29 ..
 ```bash
  sudo cp /etc/bind/db.empty /etc/bind/zones/db.labredes.ifalarapiraca.local 
 ```
+![cp /etc/bind/db.empty](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/20.jpg)
+
 
 ##### zona reversa
    * Utilizado quando não se conhece o IP mas sabe-se o nome do host.
@@ -72,6 +80,8 @@ drwxr-xr-x 94 root root 4096 Oct  8 23:29 ..
 ```bash
  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
 ```
+![cp /etc/bind/db.127](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/21.jpg)
+
 
    * Assim, o arquivo **db.10.9.14.rev** conterá a zona reversa da rede 10.9.14.0. 
 
@@ -83,10 +93,10 @@ drwxr-xr-x 94 root root 4096 Oct  8 23:29 ..
       * As linhas iniciadas com **;** são comentários 
       
 ```bash   
- sudo nano db.labredes.ifalarapiraca.local 
+ sudo nano /etc/bind/zones/db.labredes.ifalarapiraca.local 
 ```
----
 ```
+RESULTADO
 ;
 ; BIND data file for internal network
 ;
@@ -107,14 +117,19 @@ srv.pedro_felipe_914.labredes.ifalarapiraca.local.	  IN	A	10.9.14.126
 gw.pedro_felipe_914.labredes.ifalarapiraca.local.	  IN 	A	10.9.14.1          
 desktophost1    CNAME     srv                 ; CNAME é um apelido
 ```
+![nano /etc/bind/zones/db.labredes.ifalarapiraca.local](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/22.jpg)
 
----
+
    #### zona reversa: db.10.9.14.rev
    * edite o arquivo **db.10.9.14.rev** para adcionar as informações da zona reversa
       * As linhas iniciadas com **;** são comentários.
-   
----
+
+
+```bash   
+ sudo nano /etc/bind/zones/db.10.9.14.rev
+```   
 ```
+RESULTADO
 ;
 ; BIND reverse data file of reverse zone for local area network 10.9.14.0/24
 ;
@@ -134,16 +149,16 @@ $TTL    604800
 126  IN      PTR     srv.pedro_felipe_914.labredes.ifalarapiraca.local.    	         ; 10.9.14.100
 1    IN      PTR     gw.pedro_felipe_914.labredes.ifalarapiraca.local.               ; 10.9.14.1
 ```
----
+![nano /etc/bind/zones/db.10.9.14.rev](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/23.jpg)
 
-### Configuração do named.conf.local
+   ### Configuração do named.conf.local
    * Para ativar as zonas descritas nos arquivos **db** deve-se editar o arquivo de configuracão do bind para informar onde eles foram salvos. As zonas são adicionadas em **/etc/bind/named.conf.local**.
    
 ```bash
  sudo nano /etc/bind/named.conf.local
 ```
----
 ```
+RESULTADO
 //
 // Do any local configuration here
 //
@@ -165,35 +180,49 @@ zone "14.9.10.in-addr.arpa" IN {
 	allow-transfer{ 10.9.14.126; };
 };
 ```
----
+![nano /etc/bind/named.conf.local](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/24.jpg)
 
-### Verificação de sintaxe 
+
+   ### Verificação de sintaxe 
+   
    * Para checar a sintaxe de configuração do BIND deve-se executar o comando named-checkconf. Este scritp checa os arquivos /etc/bind/named.conf.local.*
 
 ```bash
  sudo named-checkconf
 ```
 
-###  Verificar a sintaxe dos arquivos de dados
-   * Para verificar se a formatação da sintaxe dos arquivos db está correta, utiliza-se o script named-checkconf da seguinte forma: ***named-check-zone <zone> <db_file>***
+   ###  Verificar a sintaxe dos arquivos de dados
+   
+   * Para verificar se a formatação da sintaxe dos arquivos db está correta, utiliza-se o script named-checkconf da seguinte forma: 
+   
    * Vamos entrar no diretório zones
 
 ```bash
  cd /etc/bind/zones
 ```
 
-   Agora digite o comando
+   * Agora digite os comandos e veja se está ok
   
 ```bash
  sudo named-checkzone labredes.ifalarapiraca.local db.labredes.ifalarapiraca.local
+```
+```bash
+RESULTADO
+...
 zone labredes.ifalarapiraca.local/IN: loaded serial 1
 OK
 ```
 ```
  sudo named-checkzone 14.9.10.in-addr.arpa db.10.9.14.rev
+```
+```bash
+RESULTADO
+...	
 zone 14.9.10.in-addr.arpa/IN: loaded serial 1
 OK
 ```
+![nano /etc/bind/named.conf.local](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/25.jpg)
+
 
 ### Configure para somente resolver endereços IPv4
 
@@ -211,6 +240,7 @@ RESOLVCONF=no
 # startup options for the server
 OPTIONS="-4 -u bind"
 ```
+![nano /etc/bind/named.conf.local](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/26.jpg)
 
 ### Vamos reiniciar o BIND 
 
@@ -220,11 +250,13 @@ OPTIONS="-4 -u bind"
 
 ### Configuração dos clientes
    * Configure o DNS na máquina ns1, adicionando o IP no campo adresses de name server, onde estava o IP do google, interface de rede local (ens160).
+
+
 ```
             nameservers: 
                 addresses:
                 - 10.9.14.10
-                search: [labredes.ifalarapiraca.local]
+                search: [pedro_filipe_914.labredes.ifalarapiraca.local]
 ```
   
    * O arquivo de configuração do netplan ficará da seguinte forma:
@@ -233,6 +265,7 @@ OPTIONS="-4 -u bind"
  sudo nano /etc/netplan/00-installer-config.yaml
 ```
 ```bash
+RESULTADO
 network:
     ethernets:
         ens160:                           # interface local
@@ -247,10 +280,10 @@ network:
             addresses: [192.168.0.201/25] # IP e Máscara de interface externa.
     version: 2
 ```
+![nano /etc/bind/named.conf.local](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/27.jpg)
 
    * O campo search indica o nome do domínio no qual a máquina pertence.
    
----
 ### Testando o servidor DNS:
 
 #### Teste de configuração como cliente. 
@@ -271,11 +304,15 @@ MulticastDNS setting: no
                       10.9.14.11
          DNS Domain: pedro_filipe_194.labredes.ifalarapiraca.local
 ```
+> Parte 1 da imagem
 
    ### Para finalizar é só ver se o nosso serviço DNS resolve o DNS do Google
   
 ```bash
   ping google.com
 ```
+> Parte 2 a imagem
+![nano /etc/bind/named.conf.local](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/29.jpg)
+
 
 ### [VOLTAR PARA HOME](https://github.com/0rmindo/SRed-2021/blob/main/README.md)
