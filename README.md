@@ -1,4 +1,21 @@
+### CABECALHO
+
+ INSTITUTO FEDERAL DE ALAGOAS - CAMPUS ARAPIRACA
+
+ PEDRO CARLOS ORMINDO DA SILVA
+
+ FILIPE ALVES DE SOUZA
+ 
+ TURMA 914
+
+## O QUE IREMOS FAZER
+* Nessa atividade vamos fazer a configuração da VM
+* Iremos implementar o serviço de compartilhamento de arquivo (SAMBA)
+* Iremos implementar o servidor de resoluçao de DNS (BIND9)
+
+
 # CRIAÇÃO DE SERVIÇO SAMBA E SERVIDOR DNS
+
 Resolução da Atividade Samba e DNS
 > Siga o passo a passo
 
@@ -37,8 +54,7 @@ Tabela 3: Nomes dos servidores
 |:------------------|:-----------------------------------------------------|
 | Gateway (gw)      | gw.pedro_filipe_914.labredes.ifalarapiraca.local     |
 | NameServer1 (ns1) | ns1.pedro_filipe_914.labredes.ifalarapiraca.local    |
-| NameServer2 (ns2) | ns2.pedro_filipe_914.labredes.ifalarapiraca.local    |
-| Samba-SRV.        | samba.pedro_filipe_914.labredes.ifalarapiraca.local  |
+| Samba-SRV.        | srv.pedro_filipe_914.labredes.ifalarapiraca.local  |
 
 ### Configuração da interface de rede 
 (Parte1)
