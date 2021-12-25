@@ -91,6 +91,9 @@ sudo bash -c 'grep -v -E "^#|^;" /etc/samba/smb.conf.backup | grep . > /etc/samb
 
 ```bash
  sudo nano /etc/samba/smb.conf
+```
+```bash
+RESULTADO
 [global]
    workgroup = WORKGROUP
    server string = %h server (Samba, Ubuntu)
@@ -143,6 +146,7 @@ sudo bash -c 'grep -v -E "^#|^;" /etc/samba/smb.conf.backup | grep . > /etc/samb
 
 
 ```bash
+RESULTA
 [public]
    comment = public anonymous access
    path = /samba/public
@@ -185,6 +189,8 @@ sudo bash -c 'grep -v -E "^#|^;" /etc/samba/smb.conf.backup | grep . > /etc/samb
     
 ```bash
  sudo smbpasswd -a aluno
+```
+```
 New SMB password:
 Retype new SMB password:
 Added user aluno.
