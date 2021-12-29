@@ -2,9 +2,12 @@
 
 Vamos definir o nome da VM como ns1
 ```bash
- sudo hostnamectl ns1
- ```
- ```bash
+ sudo nano /etc/hostname
+```
+```bash
+ sudo nano /etc/hosts
+```
+```bash
  sudo reboot
 ```
 OBS: após o reboot o nome da máquina aparecerá no prompt do shell
