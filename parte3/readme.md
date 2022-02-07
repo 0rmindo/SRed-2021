@@ -260,6 +260,7 @@ Status: inactive
    14. Agora abra o seu exploirador de arquivo e digite o IP da VM _(10.9.14.126)_
 
  ![chgrp](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/32.jpg)
+ ![chgrp](https://github.com/0rmindo/SRed-2021/blob/main/imaegens/comprovante.PNG)
  
  **Está funcionando**
   
